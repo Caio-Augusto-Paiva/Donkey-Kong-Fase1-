@@ -1,11 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://ncpgpt7y0j0i"]
+[gd_scene load_steps=26 format=3 uid="uid://ncpgpt7y0j0i"]
 
+[ext_resource type="Script" uid="uid://dxiho0hditm6l" path="res://player.gd" id="1_0b4ue"]
+[ext_resource type="Script" uid="uid://emxchav7xgkt" path="res://level.gd" id="1_f2txt"]
 [ext_resource type="Texture2D" uid="uid://bh00v7byuj11p" path="res://images/mario2d.webp" id="1_oi3di"]
 [ext_resource type="Texture2D" uid="uid://d1g02knsrwcex" path="res://images/princess.png" id="2_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://qk5ttgla3cb" path="res://images/donkeykong.png" id="2_1ainy"]
 [ext_resource type="Texture2D" uid="uid://y1yehcsj60l" path="res://images/cena 1.jpg" id="3_f2txt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ainy"]
-size = Vector2(55.5, 59.875)
+size = Vector2(35.75, 26.9375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2txt"]
+size = Vector2(42, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6hdu"]
 size = Vector2(44.5, 51.5)
@@ -60,19 +66,35 @@ size = Vector2(45.125, 131.5)
 
 [node name="Level" type="Node2D"]
 position = Vector2(841, -5)
+script = ExtResource("1_f2txt")
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-615.5, 162)
+scale = Vector2(0.8008849, 0.9361702)
+texture = ExtResource("2_1ainy")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-537, 217)
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["escadas"]]
 visible = false
 position = Vector2(-679, 617)
+script = ExtResource("1_0b4ue")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(1, -2)
-scale = Vector2(0.080468774, 0.07261905)
+position = Vector2(4.000005, -3.9999943)
+scale = Vector2(0.040234387, 0.027976181)
 texture = ExtResource("1_oi3di")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-2, 0)
+position = Vector2(3, -7)
 shape = SubResource("RectangleShape2D_1ainy")
+
+[node name="DetectorEscada" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/DetectorEscada"]
+position = Vector2(4, -5)
+shape = SubResource("RectangleShape2D_f2txt")
 
 [node name="Objetivo" type="Area2D" parent="."]
 visible = false
@@ -88,9 +110,10 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_n6hdu")
 
 [node name="Plataformas" type="Node2D" parent="."]
+visible = false
 position = Vector2(-294, 8)
 
-[node name="Plataforma1" type="Area2D" parent="Plataformas"]
+[node name="Plataforma1" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(35, 166)
 
@@ -98,96 +121,107 @@ position = Vector2(35, 166)
 position = Vector2(14.25, -4)
 shape = SubResource("RectangleShape2D_km5ld")
 
-[node name="Plataforma2" type="Area2D" parent="Plataformas"]
+[node name="Plataforma2" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(35, 166)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma2"]
 position = Vector2(-144.125, 68)
 shape = SubResource("RectangleShape2D_i2t4f")
+one_way_collision = true
 
-[node name="Plataforma3" type="Area2D" parent="Plataformas"]
+[node name="Plataforma3" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(153, -54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma3"]
 position = Vector2(274.375, 294)
 shape = SubResource("RectangleShape2D_8cye3")
+one_way_collision = true
 
-[node name="Plataforma4" type="Area2D" parent="Plataformas"]
+[node name="Plataforma4" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(435, 308)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma4"]
 position = Vector2(-73, -3)
 shape = SubResource("RectangleShape2D_2orkt")
+one_way_collision = true
 
-[node name="Plataforma5" type="Area2D" parent="Plataformas"]
+[node name="Plataforma5" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(-195, 319)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma5"]
 position = Vector2(34, -1)
 shape = SubResource("RectangleShape2D_aicyk")
+one_way_collision = true
 
-[node name="Plataforma6" type="Area2D" parent="Plataformas"]
+[node name="Plataforma6" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(-275, 395)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma6"]
 position = Vector2(39, -6)
 shape = SubResource("RectangleShape2D_8cye3")
+one_way_collision = true
 
-[node name="Plataforma7" type="Area2D" parent="Plataformas"]
+[node name="Plataforma7" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(322, 401)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma7"]
 position = Vector2(-33, 3.5)
 shape = SubResource("RectangleShape2D_8b0r0")
+one_way_collision = true
 
-[node name="Plataforma8" type="Area2D" parent="Plataformas"]
+[node name="Plataforma8" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(327, 468)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma8"]
 position = Vector2(-3.5, 8)
 shape = SubResource("RectangleShape2D_h6smj")
+one_way_collision = true
 
-[node name="Plataforma9" type="Area2D" parent="Plataformas"]
+[node name="Plataforma9" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(-243, 488)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma9"]
 position = Vector2(42.5, -3)
 shape = SubResource("RectangleShape2D_v5j5c")
+one_way_collision = true
 
-[node name="Plataforma10" type="Area2D" parent="Plataformas"]
+[node name="Plataforma10" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(-247, 561)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma10"]
 position = Vector2(12, -4)
 shape = SubResource("RectangleShape2D_5pxul")
+one_way_collision = true
 
-[node name="Plataforma11" type="Area2D" parent="Plataformas"]
+[node name="Plataforma11" type="StaticBody2D" parent="Plataformas"]
 visible = false
 position = Vector2(306, 573)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma11"]
 position = Vector2(-37, -3)
 shape = SubResource("RectangleShape2D_fedht")
+one_way_collision = true
 
-[node name="Plataforma12" type="Area2D" parent="Plataformas"]
+[node name="Plataforma12" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(332, 642)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma12"]
 position = Vector2(-298, -3)
 shape = SubResource("RectangleShape2D_8cye3")
+one_way_collision = true
 
-[node name="Escadas" type="Node" parent="."]
+[node name="Escadas" type="Node" parent="." groups=["escadas"]]
 
-[node name="Escada1" type="Area2D" parent="Escadas"]
+[node name="Escada1" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(978, 572)
 
@@ -195,7 +229,7 @@ position = Vector2(978, 572)
 position = Vector2(2, 19.75)
 shape = SubResource("RectangleShape2D_4c15r")
 
-[node name="Escada2" type="Area2D" parent="Escadas"]
+[node name="Escada2" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(523, 495)
 
@@ -203,7 +237,7 @@ position = Vector2(523, 495)
 position = Vector2(13, 8.75)
 shape = SubResource("RectangleShape2D_ait7k")
 
-[node name="Escada3" type="Area2D" parent="Escadas"]
+[node name="Escada3" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(201, 520)
 
@@ -211,7 +245,7 @@ position = Vector2(201, 520)
 position = Vector2(11, -13)
 shape = SubResource("RectangleShape2D_42xju")
 
-[node name="Escada4" type="Area2D" parent="Escadas"]
+[node name="Escada4" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(604, 450)
 
@@ -219,7 +253,7 @@ position = Vector2(604, 450)
 position = Vector2(12, -25.125)
 shape = SubResource("RectangleShape2D_v7sqt")
 
-[node name="Escada5" type="Area2D" parent="Escadas"]
+[node name="Escada5" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(983, 431)
 
@@ -227,7 +261,7 @@ position = Vector2(983, 431)
 position = Vector2(-3, -9)
 shape = SubResource("RectangleShape2D_42xju")
 
-[node name="Escada6" type="Area2D" parent="Escadas"]
+[node name="Escada6" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(195, 348)
 
@@ -235,7 +269,7 @@ position = Vector2(195, 348)
 position = Vector2(16, -6)
 shape = SubResource("RectangleShape2D_42xju")
 
-[node name="Escada7" type="Area2D" parent="Escadas"]
+[node name="Escada7" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(420, 345)
 
@@ -243,7 +277,7 @@ position = Vector2(420, 345)
 position = Vector2(-5, -1)
 shape = SubResource("RectangleShape2D_42xju")
 
-[node name="Escada8" type="Area2D" parent="Escadas"]
+[node name="Escada8" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(980, 277)
 
@@ -251,7 +285,7 @@ position = Vector2(980, 277)
 position = Vector2(-4.03125, -10.5)
 shape = SubResource("RectangleShape2D_42xju")
 
-[node name="Escada9" type="Area2D" parent="Escadas"]
+[node name="Escada9" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(700, 187)
 
@@ -259,7 +293,7 @@ position = Vector2(700, 187)
 position = Vector2(-3.0625, 4.75)
 shape = SubResource("RectangleShape2D_42xju")
 
-[node name="Escada10" type="Area2D" parent="Escadas"]
+[node name="Escada10" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(372, 153)
 
@@ -267,7 +301,7 @@ position = Vector2(372, 153)
 position = Vector2(2, 7)
 shape = SubResource("RectangleShape2D_ilwjd")
 
-[node name="Escada11" type="Area2D" parent="Escadas"]
+[node name="Escada11" type="Area2D" parent="Escadas" groups=["escadas"]]
 visible = false
 position = Vector2(455, 164)
 
@@ -280,3 +314,7 @@ z_index = -1
 position = Vector2(-261.00006, 330)
 scale = Vector2(2.5185187, 1.263158)
 texture = ExtResource("3_f2txt")
+
+[connection signal="area_entered" from="Player/DetectorEscada" to="Player" method="_on_detector_escada_area_entered"]
+[connection signal="area_exited" from="Player/DetectorEscada" to="Player" method="_on_detector_escada_area_exited"]
+[connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
