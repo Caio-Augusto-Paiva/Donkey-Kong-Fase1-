@@ -11,13 +11,24 @@ var esta_na_escada = false
 
 func _physics_process(delta):
 	
+	# --- [NOVO] TRAVA DE SEGURANÇA ---
+	# Se o jogo acha que NÃO estamos na escada, verificamos manualmente
+	# se o detector está tocando em alguma área do grupo "escadas".
+	if not esta_na_escada:
+		# Pega todas as áreas que o Detector está tocando agora
+		var areas_tocadas = $DetectorEscada.get_overlapping_areas()
+		for area in areas_tocadas:
+			if area.is_in_group("escadas"):
+				esta_na_escada = true
+				break # Achou uma escada, para de procurar
+	# ---------------------------------
+
 	# 1. Aplicar Gravidade
 	# Só aplicamos gravidade se NÃO estiver no chão E NÃO estiver segurando na escada
 	if not is_on_floor() and not esta_na_escada:
 		velocity.y += GRAVIDADE * delta
 
 	# 2. Movimento Horizontal (Andar)
-	# Pega a direção (-1 para esquerda, 1 para direita, 0 parado)
 	var direcao = Input.get_axis("ui_left", "ui_right")
 	
 	if direcao != 0:
@@ -42,12 +53,11 @@ func _physics_process(delta):
 
 # --- Sinais do DetectorEscada ---
 
-# Quando o detector entra na área da escada
+# Mantemos os sinais para garantir que ele saia da escada quando se afastar
 func _on_detector_escada_area_entered(area):
 	if area.is_in_group("escadas"):
 		esta_na_escada = true
 
-# Quando o detector sai da área da escada
 func _on_detector_escada_area_exited(area):
 	if area.is_in_group("escadas"):
 		esta_na_escada = false
