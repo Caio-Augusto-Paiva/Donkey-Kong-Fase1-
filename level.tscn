@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ncpgpt7y0j0i"]
+[gd_scene load_steps=22 format=3 uid="uid://ncpgpt7y0j0i"]
 
 [ext_resource type="Script" uid="uid://dxiho0hditm6l" path="res://player.gd" id="1_0b4ue"]
 [ext_resource type="Script" uid="uid://emxchav7xgkt" path="res://level.gd" id="1_f2txt"]
@@ -49,34 +49,38 @@ size = Vector2(41, 131)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3bce"]
 size = Vector2(40, 132)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km5ld"]
+size = Vector2(2116, 41)
+
 [node name="Level" type="Node2D"]
 position = Vector2(841, -5)
 script = ExtResource("1_f2txt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Kong" type="Sprite2D" parent="."]
 position = Vector2(-615.5, 162)
 scale = Vector2(0.8008849, 0.9361702)
 texture = ExtResource("2_1ainy")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-537, 217)
+[node name="SpawBarril" type="Marker2D" parent="."]
+position = Vector2(-564, 182)
+gizmo_extents = 197.2
 
-[node name="Player" type="CharacterBody2D" parent="." groups=["jogador"]]
+[node name="Mario" type="CharacterBody2D" parent="." groups=["jogador"]]
 position = Vector2(-679, 617)
 script = ExtResource("1_0b4ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Mario"]
 position = Vector2(-105.99999, 8.50001)
 scale = Vector2(0.053124983, 0.051190455)
 texture = ExtResource("1_oi3di")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mario"]
 position = Vector2(-108, 12)
 shape = SubResource("RectangleShape2D_1ainy")
 
-[node name="DetectorEscada" type="Area2D" parent="Player"]
+[node name="DetectorEscada" type="Area2D" parent="Mario"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/DetectorEscada"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mario/DetectorEscada"]
 position = Vector2(-108, 12)
 shape = SubResource("RectangleShape2D_f2txt")
 
@@ -99,19 +103,19 @@ position = Vector2(-294, 8)
 position = Vector2(35, 166)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma1"]
-polygon = PackedVector2Array(92, 5, -109, 5, -109, -12, 92, -12)
+polygon = PackedVector2Array(92, 5, -109, 5, -109, -12, 92, -11)
 
 [node name="Plataforma2" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(35, 166)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma2"]
-polygon = PackedVector2Array(374, 85, 134, 75, -553, 78, -553, 59, 134, 59, 374, 67)
+polygon = PackedVector2Array(374, 85, 134, 75, -553, 78, -554, 56, 134, 59, 374, 69)
 
 [node name="Plataforma3" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(35, 166)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma3"]
-polygon = PackedVector2Array(498, 84, 416, 85, 416, 67, 497, 70)
+polygon = PackedVector2Array(498, 84, 416, 85, 416, 70, 497, 70)
 
 [node name="Plataforma4" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(35, 166)
@@ -126,7 +130,7 @@ position = Vector2(35, 166)
 polygon = PackedVector2Array(-190, 165, -350, 168, -350, 151, -190, 145)
 
 [node name="Plataforma6" type="StaticBody2D" parent="Plataformas"]
-position = Vector2(153, -54)
+position = Vector2(156, -55)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma6"]
 polygon = PackedVector2Array(-510, 393, -589, 390, -589, 373, -510, 371)
@@ -266,10 +270,23 @@ shape = SubResource("RectangleShape2D_y3bce")
 
 [node name="FundoLevel" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-263.00006, 331.00003)
+position = Vector2(-261.00006, 330)
 scale = Vector2(2.5185187, 1.263158)
 texture = ExtResource("3_f2txt")
 
-[connection signal="area_entered" from="Player/DetectorEscada" to="Player" method="_on_detector_escada_area_entered"]
-[connection signal="area_exited" from="Player/DetectorEscada" to="Player" method="_on_detector_escada_area_exited"]
+[node name="Abismo" type="Area2D" parent="."]
+position = Vector2(-53, -59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Abismo"]
+position = Vector2(-210, 808.5)
+shape = SubResource("RectangleShape2D_km5ld")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Mario/DetectorEscada" to="Mario" method="_on_detector_escada_area_entered"]
+[connection signal="area_exited" from="Mario/DetectorEscada" to="Mario" method="_on_detector_escada_area_exited"]
 [connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
+[connection signal="body_entered" from="Abismo" to="." method="_on_abismo_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

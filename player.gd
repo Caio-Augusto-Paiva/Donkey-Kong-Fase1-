@@ -33,6 +33,10 @@ func _physics_process(delta):
 	
 	if direcao != 0:
 		velocity.x = direcao * VELOCIDADE_HORIZONTAL
+		if direcao < 0:
+			$Sprite2D.flip_h = false
+		else:
+			$Sprite2D.flip_h = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, VELOCIDADE_HORIZONTAL)
 
