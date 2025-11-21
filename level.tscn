@@ -397,7 +397,7 @@ shape = SubResource("RectangleShape2D_y3bce")
 
 [node name="FundoLevel" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-261.00006, 330)
+position = Vector2(-263.00006, 330)
 scale = Vector2(2.5185187, 1.263158)
 texture = ExtResource("3_f2txt")
 
