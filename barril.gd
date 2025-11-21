@@ -2,11 +2,12 @@ extends RigidBody2D
 
 var velocidade_constante = 200
 var desaceleramento = velocidade_constante * 0.4
-#
+var multiplicador_aletororio = randf_range(0.9,1.3)
+
 func _integrate_forces(state):
-	var velocidade_atual = state.linear_velocity
+	var velocidade_atual_y = state.linear_velocity.y
 	
-	state.linear_velocity = Vector2(velocidade_constante,velocidade_atual.y)
+	state.linear_velocity = Vector2(velocidade_constante*multiplicador_aletororio,velocidade_atual_y)
 
 func _on_body_entered(body):
 	if body.is_in_group("jogador"):
