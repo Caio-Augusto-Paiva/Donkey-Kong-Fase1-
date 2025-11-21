@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ncpgpt7y0j0i"]
+[gd_scene load_steps=33 format=3 uid="uid://ncpgpt7y0j0i"]
 
 [ext_resource type="Script" uid="uid://dxiho0hditm6l" path="res://player.gd" id="1_0b4ue"]
 [ext_resource type="Script" uid="uid://emxchav7xgkt" path="res://level.gd" id="1_f2txt"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://y1yehcsj60l" path="res://images/cena 1.jpg" id="3_f2txt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ainy"]
-size = Vector2(10, 36)
+size = Vector2(10, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2txt"]
 size = Vector2(10, 36)
@@ -16,8 +16,23 @@ size = Vector2(10, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6hdu"]
 size = Vector2(44.5, 51.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pxul"]
+size = Vector2(3, 14.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fedht"]
+size = Vector2(3.5, 16.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aoqsc"]
+size = Vector2(3.5, 16.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mleqk"]
+size = Vector2(6, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c15r"]
 size = Vector2(41, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2t4f"]
+size = Vector2(41, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ait7k"]
 size = Vector2(41.875, 80)
@@ -25,20 +40,38 @@ size = Vector2(41.875, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42xju"]
 size = Vector2(41.09375, 61)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cye3"]
+size = Vector2(42, 10)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7sqt"]
 size = Vector2(41.03125, 82.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2orkt"]
+size = Vector2(41, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3yai"]
 size = Vector2(41, 62)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aicyk"]
+size = Vector2(41, 5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fj6e6"]
 size = Vector2(41.546875, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8b0r0"]
+size = Vector2(39, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h3vt"]
 size = Vector2(41, 70)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6smj"]
+size = Vector2(40.5, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjxuc"]
 size = Vector2(42, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5j5c"]
+size = Vector2(42, 11.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvubb"]
 size = Vector2(42.09375, 72)
@@ -75,7 +108,7 @@ scale = Vector2(0.053124983, 0.051190455)
 texture = ExtResource("1_oi3di")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mario"]
-position = Vector2(-108, 12)
+position = Vector2(-108, 16.5)
 shape = SubResource("RectangleShape2D_1ainy")
 
 [node name="DetectorEscada" type="Area2D" parent="Mario"]
@@ -84,15 +117,15 @@ shape = SubResource("RectangleShape2D_1ainy")
 position = Vector2(-108, 12)
 shape = SubResource("RectangleShape2D_f2txt")
 
-[node name="Objetivo" type="Area2D" parent="."]
+[node name="Princesa" type="Area2D" parent="."]
 position = Vector2(-319, 133)
 
-[node name="Sprite2D" type="Sprite2D" parent="Objetivo"]
+[node name="Sprite2D" type="Sprite2D" parent="Princesa"]
 position = Vector2(0.9999962, 0)
 scale = Vector2(0.29124987, 0.24874993)
 texture = ExtResource("2_0b4ue")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetivo"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Princesa"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_n6hdu")
 
@@ -117,6 +150,12 @@ position = Vector2(35, 166)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma3"]
 polygon = PackedVector2Array(498, 84, 416, 85, 416, 70, 497, 70)
 
+[node name="Inversor" type="Area2D" parent="Plataformas/Plataforma3" groups=["inversores"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma3/Inversor"]
+position = Vector2(496.5, 77.25)
+shape = SubResource("RectangleShape2D_5pxul")
+
 [node name="Plataforma4" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(35, 166)
 
@@ -134,6 +173,12 @@ position = Vector2(156, -55)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma6"]
 polygon = PackedVector2Array(-510, 393, -589, 390, -589, 373, -510, 371)
+
+[node name="Inversor" type="Area2D" parent="Plataformas/Plataforma6" groups=["inversores"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma6/Inversor"]
+position = Vector2(-587.25, 381.125)
+shape = SubResource("RectangleShape2D_fedht")
 
 [node name="Plataforma7" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(435, 308)
@@ -153,6 +198,12 @@ position = Vector2(-275, 395)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma9"]
 polygon = PackedVector2Array(806, 23, 726, 23, 726, 4, 806, 7)
 
+[node name="Inversor" type="Area2D" parent="Plataformas/Plataforma9" groups=["inversores"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma9/Inversor"]
+position = Vector2(804.25, 15.0625)
+shape = SubResource("RectangleShape2D_aoqsc")
+
 [node name="Plataforma10" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(322, 401)
 
@@ -171,6 +222,12 @@ position = Vector2(-243, 488)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma12"]
 polygon = PackedVector2Array(-194, -3, -194, 16, -113, 16, -113, -5)
 
+[node name="Inversor" type="Area2D" parent="Plataformas/Plataforma12" groups=["inversores"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma12/Inversor"]
+position = Vector2(-192, 6.5)
+shape = SubResource("RectangleShape2D_mleqk")
+
 [node name="Plataforma13" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(-247, 561)
 
@@ -182,6 +239,12 @@ position = Vector2(306, 573)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma14"]
 polygon = PackedVector2Array(224, 12, 143, 12, 143, -7, 224, -4)
+
+[node name="Inversor" type="Area2D" parent="Plataformas/Plataforma14" groups=["inversores"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataformas/Plataforma14/Inversor"]
+position = Vector2(221, 4)
+shape = SubResource("RectangleShape2D_mleqk")
 
 [node name="Plataforma15" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(332, 642)
@@ -198,12 +261,28 @@ position = Vector2(978, 572)
 position = Vector2(-2.5, 27)
 shape = SubResource("RectangleShape2D_4c15r")
 
+[node name="Ponte" type="StaticBody2D" parent="Escadas/Escada1"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada1/Ponte"]
+position = Vector2(-2.5, -0.5)
+shape = SubResource("RectangleShape2D_i2t4f")
+
 [node name="Escada2" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(523, 495)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada2"]
 position = Vector2(11.0625, 20)
 shape = SubResource("RectangleShape2D_ait7k")
+
+[node name="Ponte" type="StaticBody2D" parent="Escadas/Escada2"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada2/Ponte"]
+position = Vector2(11, -14.5)
+shape = SubResource("RectangleShape2D_i2t4f")
 
 [node name="Escada3" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(201, 520)
@@ -212,12 +291,28 @@ position = Vector2(201, 520)
 position = Vector2(11, -4.5)
 shape = SubResource("RectangleShape2D_42xju")
 
+[node name="Ponte" type="StaticBody2D" parent="Escadas/Escada3"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada3/Ponte"]
+position = Vector2(11, -29)
+shape = SubResource("RectangleShape2D_8cye3")
+
 [node name="Escada4" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(604, 450)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada4"]
 position = Vector2(9.484375, -17.625)
 shape = SubResource("RectangleShape2D_v7sqt")
+
+[node name="Ponte" type="StaticBody2D" parent="Escadas/Escada4"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada4/Ponte"]
+position = Vector2(9.5, -53.5)
+shape = SubResource("RectangleShape2D_2orkt")
 
 [node name="Escada5" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(983, 431)
@@ -226,12 +321,28 @@ position = Vector2(983, 431)
 position = Vector2(-5.5, 1)
 shape = SubResource("RectangleShape2D_u3yai")
 
+[node name="Ponte" type="StaticBody2D" parent="Escadas/Escada5"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada5/Ponte"]
+position = Vector2(-5.5, -26.5)
+shape = SubResource("RectangleShape2D_aicyk")
+
 [node name="Escada6" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(195, 348)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada6"]
 position = Vector2(16.226563, 1)
 shape = SubResource("RectangleShape2D_fj6e6")
+
+[node name="Ponte" type="StaticBody2D" parent="Escadas/Escada6"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada6/Ponte"]
+position = Vector2(17.5, -25.5)
+shape = SubResource("RectangleShape2D_8b0r0")
 
 [node name="Escada7" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(420, 345)
@@ -240,12 +351,28 @@ position = Vector2(420, 345)
 position = Vector2(-7.5, 3)
 shape = SubResource("RectangleShape2D_2h3vt")
 
+[node name="Ponte" type="StaticBody2D" parent="Escadas/Escada7"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada7/Ponte"]
+position = Vector2(-7.5, -27)
+shape = SubResource("RectangleShape2D_h6smj")
+
 [node name="Escada8" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(980, 277)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada8"]
 position = Vector2(-3, -11.5)
 shape = SubResource("RectangleShape2D_yjxuc")
+
+[node name="Ponte" type="StaticBody2D" parent="Escadas/Escada8"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escadas/Escada8/Ponte"]
+position = Vector2(-3, -32.25)
+shape = SubResource("RectangleShape2D_v5j5c")
 
 [node name="Escada9" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(700, 187)
@@ -282,11 +409,11 @@ position = Vector2(-210, 808.5)
 shape = SubResource("RectangleShape2D_km5ld")
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
+wait_time = 3.0
 autostart = true
 
 [connection signal="area_entered" from="Mario/DetectorEscada" to="Mario" method="_on_detector_escada_area_entered"]
 [connection signal="area_exited" from="Mario/DetectorEscada" to="Mario" method="_on_detector_escada_area_exited"]
-[connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
+[connection signal="body_entered" from="Princesa" to="." method="_on_objetivo_body_entered"]
 [connection signal="body_entered" from="Abismo" to="." method="_on_abismo_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

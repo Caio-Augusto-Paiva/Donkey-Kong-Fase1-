@@ -8,15 +8,23 @@ func reiniciar_fase():
 func criar_pausa(tempo : float = 1):
 	await get_tree().create_timer(tempo).timeout
 
-
-func _on_timer_timeout() -> void:
+func criar_barril():
 	var novo_barril = cena_barril.instantiate()
 	
 	novo_barril.position = $SpawBarril.position
 	
 	add_child(novo_barril)
+
+func _ready():
+	await criar_pausa(0.5)
+	criar_barril()
+
+func _on_timer_timeout():
+	var novo_barril = cena_barril.instantiate()
 	
-	novo_barril.linear_velocity = Vector2(300.0,0)
+	novo_barril.position = $SpawBarril.position
+	
+	add_child(novo_barril)
 	
 
 func _on_objetivo_body_entered(body):

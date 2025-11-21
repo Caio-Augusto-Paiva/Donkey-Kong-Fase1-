@@ -3,15 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://qf0012a8538a" path="res://images/barril.png" id="1_cg5sr"]
 [ext_resource type="Script" uid="uid://duna8jkdk150h" path="res://barril.gd" id="1_rol37"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rol37"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_rol37"]
-radius = 24.40315
+radius = 12.034295
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v3nsi"]
+radius = 15.0
 
 [node name="Barril" type="RigidBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_rol37")
+collision_mask = 3
 contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 3
 script = ExtResource("1_rol37")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,9 +22,14 @@ texture = ExtResource("1_cg5sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(60, 30.000002)
-rotation = 1.5832624
-scale = Vector2(0.5, 0.397)
 skew = 0.0073264837
 shape = SubResource("CircleShape2D_rol37")
 
+[node name="DetectorInversor" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorInversor"]
+position = Vector2(60, 30)
+shape = SubResource("CircleShape2D_v3nsi")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="DetectorInversor" to="." method="_on_detector_inversor_area_entered"]
