@@ -112,7 +112,7 @@ position = Vector2(-294, 8)
 position = Vector2(35, 166)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plataformas/Plataforma1"]
-polygon = PackedVector2Array(92, 5, -109, 5, -109, -12, 77, -11)
+polygon = PackedVector2Array(92, 5, -109, 5, -109, -12, 73, -10)
 
 [node name="Plataforma2" type="StaticBody2D" parent="Plataformas"]
 position = Vector2(35, 166)
@@ -355,7 +355,7 @@ position = Vector2(700, 187)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Escadas/Escada9"]
 position = Vector2(-16, -21)
-polygon = PackedVector2Array(-25, -8, 32, -8, 32, 8, 32, 62, -10, 62, -10, 8)
+polygon = PackedVector2Array(-29, -7, 32, -8, 32, 8, 32, 62, -10, 62, -10, 8)
 
 [node name="Escada10" type="Area2D" parent="Escadas" groups=["escadas"]]
 position = Vector2(372, 153)
