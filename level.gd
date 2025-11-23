@@ -5,7 +5,7 @@ var cena_barril = preload("res://barril.tscn")
 func reiniciar_fase():
 	get_tree().reload_current_scene()
 	
-func criar_pausa(tempo : float = 1):
+func criar_pausa(tempo : float = 1): #cria pausas no jogo para ficar mais fluido para o jogador
 	await get_tree().create_timer(tempo).timeout
 
 func criar_barril():

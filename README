@@ -1,0 +1,15 @@
+Adaptações:
+O jogo foi adaptado e temos as seguintes consideracoes:
+-Nao foi implementado o barril de oleo que surge inimigos quando as bolas chegam ao final
+-As escadas quebradas foram retiradas do jogo 
+-As bolas que o donkey Kong joga seguem um unico trajeto 
+-A velocidade das bolas foram randomizadas para dificultar em cada vez que jogar o jogo deixando a experiencia mais divertida
+-Em determinados momentos a velociade do barril desacelera para ficar mais fluido o jogo
+-Nao contem animacoes de personagens 
+-O jogo contem apenas a primeira fase
+-Nao contem sistemas de pontos e nem o martelo do mario que quebra os barrils e garante pontos ao jogador
+Controles:
+Movimentação horizontal : setinhas
+Movimentação Vertical:
+Jump: space
+Para cima e para baixo (somente nas escadas):setinhas
